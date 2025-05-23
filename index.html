@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in form</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .msg-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 5px;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-size: 10px;
+      }
+      .delete-button {
+        margin-left: 10px;
+        padding: 10px;
+        width: 100px;
+        /* margin: 4px; */
+        border: none;
+        cursor: pointer;
+        color: black;
+        background-color: white;
+        border-radius: 4px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        
+      }
+      .delete-button:hover{
+        background-color:rgb(51, 30, 239);
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100vh;
+        background-image: url(./paper.jpg);
+        background-position:center ;
+        background-size: cover;
+        
+      }
+      .content {
+        border: 2px solid;
+        width: 600px;
+        height: 400px;
+        background-image: url(./circle.jpg);
+        background-position:center ;
+        background-size: cover;
+        /* background-color: black; */
+        box-shadow: 4px 4px 90px black;
+        border-radius: 14px;
+        /* rgb(16, 16, 78) */
+        /* opacity: 0.9; */
+        /* border: 1px solid white; */
+        border: none;
+        padding-top: 10px; 
+      }
+     
+    
+      input {
+        padding: 10px;
+        width: 320px;
+        font-size: 12px;
+        font-family: "Winky Rough", sans-serif;
+        font-weight: 300;
+        border-radius: 4px;
+        border: none;
+        outline: none;
+        /* border-bottom-color: #054ebc;
+        border-top-color: hotpink;
+        border-right-color: blueviolet;
+        border-left-color: blueviolet; */
+        
+      }
+      button {
+        padding: 10px;
+        width: 100px;
+        margin: 4px;
+        border: none;
+        background-color: white;
+        color: black;
+        font-family: "Winky Rough", sans-serif;
+        font-weight: 500;
+        border-radius: 4px;
+     
+      }
+      button:hover{
+        background-color: rgb(51, 30, 239);
+        color: aliceblue;
+      }
+      button span{
+        font-size: 12px;
+      }
+      .placeholder{
+        font-size: 12px;
+      }
+      p {
+        font-size: 28px;
+        color: white;
+        text-align: center;
+        font-family: "Winky Rough", sans-serif;
+        font-weight: 600;
+      }
+      .sec{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    
+        <div class="content">
+          <p>TO-DO-APP</p>
+          <div class="sec">
+
+            <input type="text" name="email" id="txt" placeholder="Enter here" />
+            <br />
+            <button onclick="getclick()"><span>ADD</span></button>
+          </div>
+          <div id="msg"></div>
+    </div>
+
+    <script>
+      function getclick() {
+        var mail = document.getElementById("txt").value;
+        if (mail) {
+          // Create a new message container
+          var msgContainer = document.createElement("div");
+          msgContainer.className = "msg-container";
+
+          // Create a message element
+          var message = document.createElement("h1");
+          message.innerHTML = " " + mail;
+
+          // Create a delete button
+          var deleteButton = document.createElement("button");
+          deleteButton.innerHTML = "DELETE";
+          deleteButton.className = "delete-button";
+          deleteButton.onclick = function () {
+            msgContainer.remove(); // Remove the message container
+          };
+
+          // Append message and delete button to the container
+          msgContainer.appendChild(message);
+          msgContainer.appendChild(deleteButton);
+
+          // Append the message container to the msg div
+          document.getElementById("msg").appendChild(msgContainer);
+
+          // Clear the input field
+          document.getElementById("txt").value = "";
+        } else {
+          alert("Please enter a value.");
+        }
+      }
+    </script>
+  </body>
+</html>
